@@ -9,10 +9,19 @@
   // EDITING STARTS HERE (you dont need to edit anything above this line)
 
   var db = new PouchDB('todos');
+  
+console.log(db.info());
+db.info().then(function(info) {
+  console.log(info);
+});
+
 
   // Replace with remote instance, this just replicates to another local instance.
-  var remoteCouch = 'todos_remote';
-
+  //var remoteCouch = new PouchDB('todos_remote');
+  var remoteCouch = new PouchDB('data/myremotedb');
+remoteCouch.info().then(function(info) {
+  console.log(info);
+});
   db.changes({
     since: 'now',
     live: true
